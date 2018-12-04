@@ -1,7 +1,7 @@
 const allTodos = (state) => {
   let todosItems = [];
   let stateKeys = Object.keys(state.todos);
-  stateKeys.map(key => todosItems.push(state.todos[key]));
+  stateKeys.map(key => todosItems.push({key: state.todos[key]}));
   return todosItems;
 };
 

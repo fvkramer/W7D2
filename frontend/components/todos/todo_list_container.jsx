@@ -4,10 +4,12 @@ import allTodos from '../../reducers/selectors';
 
 const mapStateToProps = (store) => ({
   todos: allTodos(store)
-}); 
+});
 
-const mDP = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
   recieveTodo: (todo) => dispatch(recieveTodo(todo))
 });
 
-const TodoListContainer = connect(mapStateToProps, mDP)(TodoList);
+const TodoListContainer = connect(mapStateToProps, mapDispatchToProps)(TodoList);
+
+export default TodoListContainer;
