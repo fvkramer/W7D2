@@ -1,29 +1,26 @@
 import React from 'react';
 import TodoForm from './todo_form';
 
-const TodoList = ({todos}) => {
-  const todos = [];
-
-  for (var key in props) {
-    if (key === 'title') {
-      todos.push(props[key]);
-    }
-  }
-
+const TodoList = ({todos, receiveTodo}) => {
+  console.log(todos);
+  const listItems = todos.map((todo, ind) => {
+    return <TodoListItem key={ind} title={todo.title}/>
+  })
+  //
+  console.log(listItems);
   return (
     <div>
       <ul>
-        {todos.map(todo => <TodoListItem item={todo}/>)}
+        {listItems}
       </ul>
-      <TodoForm />
+      <TodoForm receiveTodo={receiveTodo} />
     </div>
   );
 };
 
-
-const TodoListItem = (item) => {
+const TodoListItem = ({title}) => {
   return (
-    <li>{item}</li>
+    <li>{title}</li>
   );
 };
 

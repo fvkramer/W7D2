@@ -5,25 +5,42 @@
 // };
 
 import React from 'react';
+import uniqueId from '../../util/generate_id';
 
 class TodoForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       title: this.props.title || "",
-      body: this.props.body || ""
+      body: this.props.body || "",
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleTypeTitle = this.handleTypeTitle.bind(this);
+    this.handleTypeBody = this.handleTypeBody.bind(this);
   }
 
   handleClick(e) {
     e.preventDefault();
     console.log(e);
-    // this.setState({
-    //   title: e.target.,
-    //   body: this.state.body
-    // });
+    console.log(this.state);
+    this.props.receiveTodo(Object.assign({}, this.state, {id: uniqueId()}));
   }
+
+  handleTypeTitle(e) {
+    e.preventDefault();
+    this.setState({
+      title: e.target.value,
+    });
+  }
+
+
+  handleTypeBody(e) {
+    e.preventDefault();
+    this.setState({
+      body: e.target.value
+    });
+  }
+
 
 
   render () {
@@ -32,15 +49,15 @@ class TodoForm extends React.Component {
         <form>
           <label>
             Title
-            <input name="title" value={this.state.title}/>
+            <input onChange={this.handleTypeTitle} name="title" value={this.state.title}/>
           </label>
 
           <label>
             Body
-            <input name="body" value={this.state.body}/>
+            <input  onChange={this.handleTypeBody} name="body" value={this.state.body}/>
           </label>
           <br/>
-          <input value="Submit" type="submit"/>
+          <input onClick={this.handleClick} value="Submit" type="submit"/>
         </form>
       </div>
     );
