@@ -24,7 +24,6 @@ const todosReducer = (state = initialState, action) => {
       newState = action.todos;
       return newState;
     case RECEIVE_TODO:
-      // newState = state;
       newState[action.todo.id] = action.todo; 
       return merge ({}, state, newState);
     default:
@@ -33,9 +32,3 @@ const todosReducer = (state = initialState, action) => {
 };
 
 export default todosReducer;
-
-// 
-// let todo = {id: 3, title: "Party in the USA"}
-// let action  = receiveTodo(todo)
-// store.dispatch(action)
-
