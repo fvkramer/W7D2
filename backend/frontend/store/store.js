@@ -6,6 +6,6 @@ import { logger } from 'redux';
 
 const configureStore = () => createStore(
   rootReducer, applyMiddleware(thunk, logger)
-);
+);  
 
 export default configureStore;
